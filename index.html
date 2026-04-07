@@ -320,13 +320,9 @@
       });
     }
 
-  const emailInput = document.getElementById('emailInput');
-if (emailInput) {
-  emailInput.addEventListener('keydown', e => {
-    if (e.key === 'Enter') handleSubmit();
-  });
-}
-
+    document.getElementById('emailInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleSubmit();
+    });
   </script>
 </body>
 </html>
