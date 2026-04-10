@@ -199,6 +199,37 @@
       text-align: right;
     }
 
+    /* ── Social links ── */
+    .social {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .social-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dimmer);
+      margin-bottom: 4px;
+    }
+
+    .social-link {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dimmer);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .social-link:hover {
+      color: var(--white);
+    }
+
     /* ── Animations ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(28px); }
@@ -264,12 +295,11 @@
       <p class="bottom-tagline">
         you'll want to be here.
       </p>
-
       <div class="social">
-        <div class="social-title">SOCIAL</div>
-
-        <a class="social-link" href="https://instagram.com/fieldssocial">Instagram</a>
-        <a class="social-link" href="https://x.com/fieldssocial">X</a>
+        <span class="social-label">social</span>
+        <a class="social-link" href="https://instagram.com/fieldssocial">instagram</a>
+        <a class="social-link" href="https://x.com/fieldssocial">x</a>
+      </div>
       <div class="bottom-right">
         © 2026 fields social.
       </div>
@@ -278,7 +308,6 @@
   </div>
 
   <script>
-    // Cursor
     const cursor = document.getElementById('cursor');
     const ring   = document.getElementById('cursorRing');
     let mx = 0, my = 0, rx = 0, ry = 0;
@@ -308,11 +337,9 @@
       });
     });
 
-    // Waitlist submit
     function handleSubmit() {
       const email = document.getElementById('emailInput').value;
       const success = document.getElementById('successMsg');
-      const btn = document.getElementById('submitBtn');
 
       if (!email || !email.includes('@')) {
         document.getElementById('emailInput').style.color = 'rgba(255,255,255,0.5)';
@@ -322,7 +349,6 @@
         return;
       }
 
-      // Hide form row, show success
       document.querySelector('.form-row').style.opacity = '0';
       document.querySelector('.form-row').style.transition = 'opacity 0.4s ease';
       setTimeout(() => {
@@ -330,11 +356,9 @@
         success.style.display = 'block';
       }, 400);
 
-      // Here you'd send to your backend / email service
       console.log('Waitlist signup:', email);
     }
 
-    // Allow enter key
     document.getElementById('emailInput').addEventListener('keydown', e => {
       if (e.key === 'Enter') handleSubmit();
     });
